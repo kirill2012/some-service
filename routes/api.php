@@ -14,17 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/auth/register', [AuthController::class, 'register']);
-Route::post('/auth/login', [AuthController::class, 'login']);
-
-Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::prefix('auth')->group(function () {
-        Route::get('me', [AuthController::class, 'me']);
-        Route::post('logout', [AuthController::class, 'logout']);
-        Route::post('refresh', [AuthController::class, 'refresh']);
-    });
-});
-
-Route::get('test', function () {
-    return response()->success();
-});
+Route::post('generate', [\App\Http\Controllers\CouponController::class, 'generate']);
+Route::post('apply', [\App\Http\Controllers\CouponController::class, 'apply']);
